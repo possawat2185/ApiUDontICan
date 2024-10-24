@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { router as index } from "./api/index";
 import { router as user } from "./api/user";
+import { router as upload } from "./api/upload";
 
 export const app = express();
 
@@ -16,3 +17,4 @@ app.use(
 
 app.use("/", index);
 app.use("/user", user);
+app.use("/upload", upload);

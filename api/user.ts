@@ -13,11 +13,14 @@ router.get("/", (req, res)=>{
     })
 });
 
-router.get("/UID", (req, res)=>{
-    const UID = req.query.UID
-    if(UID){
-        res.send("Hello User :"+UID);
-    }
+router.get("/:uid", (req, res)=>{
+    const uid = req.params.uid
+    const sql = "SELECT * FROM user where uid = ? ";
+    conn.query(sql, [uid], (err, result) => {
+        res.json(result)
+        console.log(result);
+        if (err) {throw err}
+    })
 });
 
 router.get("/login", (req, res)=>{
